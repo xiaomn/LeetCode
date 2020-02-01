@@ -1,0 +1,45 @@
+<h1>leetcode  1. Two Sum Python3</h1>
+<h3>Description</h3>
+
+[点击查看题目](https://leetcode.com/problems/two-sum/)
+<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<p>Given nums = [2, 7, 11, 15], target = 9,</p>
+<p>Because nums[0] + nums[1] = 2 + 7 = 9,</p>
+<p>return [0, 1].</p>
+<h3>问题分析</h3>
+<p>本题是一道<b>简单题</b>，意思是给定一个整型数组nums和一个整数target，返回数组(nums)中的两个数的下标使得这两个数之和等于给定的整数target。</p>
+<p>明白了题目的意思，就可以编写代码了。就算使用暴力搜索也是可以的；不过要是使用一些小技巧的话就会使得自己的程序更加高效。对于本题，可以使用一个散列表去存储以遍历过的nums的元素，然后只需要查找(target - nums[i])是否在散列表中出现就可以；而且根据题目给出的意思，一定有解而且只有唯一解。</p>
+<h3>简单代码实现</h3>
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        res = []
+        for i in range(len(nums)):
+            other = target - nums[i]
+            if other in nums:
+                index = nums.index(other)
+                if index != i:
+                    res.append(i)
+                    res.append(index)
+                    return res
+        
+```
+<h3>高效代码实现</h3>
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        dict1 = {}
+        for idx, num in enumerate(nums):
+            if (target - num) in dict1:
+                return [dict1[target - num], idx]
+            dict1[num] = idx
+```
+<h3>运行结果对比</h3>
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200128095936224.png)
+<p>从上图中可以看出，二者的运行时间相差还是挺多的，所以要善于运用高效的数据结构。</p>
+<p>ok!大功告成了，如果你有其他的方法或者问题，欢迎在评论区交流。</p>
