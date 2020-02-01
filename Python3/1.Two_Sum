@@ -1,11 +1,16 @@
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
 Example:
 Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
+
 本题是一道简单题，意思是给定一个整型数组nums和一个整数target，返回数组(nums)中的两个数的下标使得这两个数之和等于给定的整数target。
-明白了题目的意思，就可以编写代码了。就算使用暴力搜索也是可以的；不过要是使用一些小技巧的话就会使得自己的程序更加高效。对于本题，可以使用一个散列表去存储以遍历过的nums的元素，然后只需要查找(target - nums[i])是否在散列表中出现就可以；而且根据题目给出的意思，一定有解而且只有唯一解。
+明白了题目的意思，就可以编写代码了。就算使用暴力搜索也是可以的；不过要是使用一些小技巧的话就会使得自己的程序更加高效。对于本题，
+可以使用一个散列表去存储以遍历过的nums的元素，然后只需要查找(target - nums[i])是否在散列表中出现就可以；而且根据题目给出的意思，
+一定有解而且只有唯一解。
+
 简单代码实现
 
 class Solution:
